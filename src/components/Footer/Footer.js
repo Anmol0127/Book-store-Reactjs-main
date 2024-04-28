@@ -10,13 +10,10 @@ const Footer = () => {
           <MDBCol md="3" lg="3" xl="4" className="mx-auto mt-3">
             <h6 className="text-uppercase mb-4 font-weight-bold">
               <img src={logo} alt="Book Store App" height="50px" />
-              <strong>Book-IT</strong>
+              <strong>Book Worm</strong>
             </h6>
             <p>
-              Book-IT is an online React web application where the customer can
-              purchase books online. Through this book store the users can
-              search for a book by its title and later can add to the shopping
-              cart and finally purchase using credit card transaction.
+              BookWorm is an online React web application designed for book enthusiasts to indulge in their favorite reads. Within this book reader app, users can explore a vast collection of books, searching by title or genre. Once they find a book they love, they can seamlessly add it to their virtual bookshelf and dive into the pages.
             </p>
           </MDBCol>
           <hr className="w-100 clearfix d-md-none" />
@@ -25,7 +22,7 @@ const Footer = () => {
               <strong>Products</strong>
             </h6>
             <p>
-              <a href="#">Book-IT</a>
+              <a href="#">BookWorm</a>
             </p>
             <p>
               <a href="https://akshatjalan.github.io/akshat/">Portfolio</a>
@@ -38,12 +35,12 @@ const Footer = () => {
               <strong>Contact</strong>
             </h6>
             <p>
-              <i className="fa fa-envelope mr-3" /> &nbsp;jalanakshat2@gmail.com
+              <i className="fa fa-envelope mr-3" /> &nbsp;anmolsharma1660@gmail.com
             </p>
             <p>
               <a
                 className="btn-floating btn-sm rgba-white-slight mx-1"
-                href="https://www.linkedin.com/in/akshat-jalan/"
+                href="https://www.linkedin.com/"
               >
                 <i className="fab fa-linkedin-in" /> &nbsp;LinkedIn
               </a>
@@ -55,7 +52,7 @@ const Footer = () => {
           <MDBCol md="8" lg="8">
             <p className="text-center text-md-left grey-text">
               &copy; {new Date().getFullYear()} Made by
-              <a href=""> Akshat Jalan </a>
+              Anmol Sharma
             </p>
           </MDBCol>
           <MDBCol md="4" lg="4" className="ml-lg-0">
@@ -64,7 +61,7 @@ const Footer = () => {
                 <li className="list-inline-item">
                   <a
                     className="btn-floating btn-sm rgba-white-slight mx-1"
-                    href="http://github.com/Akshatjalan"
+                    href="http://github.com/"
                   >
                     <i className="fab fa-github" />
                   </a>
@@ -72,7 +69,7 @@ const Footer = () => {
                 <li className="list-inline-item">
                   <a
                     className="btn-floating btn-sm rgba-white-slight mx-1"
-                    href="https://www.linkedin.com/in/akshat-jalan/"
+                    href="https://www.linkedin.com/in/"
                   >
                     <i className="fab fa-linkedin-in" />
                   </a>
@@ -80,7 +77,7 @@ const Footer = () => {
                 <li className="list-inline-item">
                   <a
                     className="btn-floating btn-sm rgba-white-slight mx-1"
-                    href="https://www.instagram.com/akshatxjalan/"
+                    href="https://www.instagram.com/"
                   >
                     <i className="fab fa-instagram" />
                   </a>

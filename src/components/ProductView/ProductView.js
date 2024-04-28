@@ -56,7 +56,7 @@ const ProductView = () => {
                 component={Link}
                 to="/"
               >
-                Continue Shopping
+                Continue Browsing
               </Button>
             </Grid>
           </Grid>

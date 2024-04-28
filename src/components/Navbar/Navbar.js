@@ -6,7 +6,7 @@ import {
   Badge,
   Typography,
 } from "@material-ui/core";
-import { ShoppingCart, Favorite } from "@material-ui/icons";
+import { Favorite } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import logo from "../../assets/circles.png";
 import useStyles from "./styles";
@@ -38,7 +38,7 @@ const Navbar = ({ totalItems }) => {
           <div className={classes.button}>
             <IconButton
               component={Link}
-              to="/cart"
+              to="/"
               aria-label="Show cart items"
               color="inherit"
             >

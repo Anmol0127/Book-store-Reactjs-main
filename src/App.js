@@ -3,7 +3,6 @@ import { CssBaseline } from "@material-ui/core";
 import { commerce } from "./lib/commerce";
 import Products from "./components/Products/Products";
 import Navbar from "./components/Navbar/Navbar";
-import Cart from "./components/Cart/Cart";
 import ProductView from "./components/ProductView/ProductView";
 import Manga from "./components/Manga/Manga";
 import Footer from "./components/Footer/Footer";
@@ -17,18 +16,16 @@ import Fiction from "./components/Fiction/Fiction";
 import Biography from "./components/Bio/Biography";
 
 const App = () => {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [products, setProducts] = useState([]);
   const [mangaProducts, setMangaProducts] = useState([]);
   const [fictionProducts, setFictionProducts] = useState([]);
   const [bioProducts, setBioProducts] = useState([]);
   const [featureProducts, setFeatureProducts] = useState([]);
-  const [cart, setCart] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
-
     setProducts(data);
   };
 
@@ -36,7 +33,6 @@ const App = () => {
     const { data } = await commerce.products.list({
       category_slug: ["manga"],
     });
-
     setMangaProducts(data);
   };
 
@@ -44,7 +40,6 @@ const App = () => {
     const { data } = await commerce.products.list({
       category_slug: ["featured"],
     });
-
     setFeatureProducts(data);
   };
 
@@ -52,7 +47,6 @@ const App = () => {
     const { data } = await commerce.products.list({
       category_slug: ["fiction"],
     });
-
     setFictionProducts(data);
   };
 
@@ -60,48 +54,12 @@ const App = () => {
     const { data } = await commerce.products.list({
       category_slug: ["biography"],
     });
-
     setBioProducts(data);
-  };
-
-  const fetchCart = async () => {
-    setCart(await commerce.cart.retrieve());
-  };
-
-  const handleAddToCart = async (productId, quantity) => {
-    const item = await commerce.cart.add(productId, quantity);
-
-    setCart(item.cart);
-  };
-
-  const handleUpdateCartQty = async (lineItemId, quantity) => {
-    const response = await commerce.cart.update(lineItemId, { quantity });
-
-    setCart(response.cart);
-  };
-
-  const handleRemoveFromCart = async (lineItemId) => {
-    const response = await commerce.cart.remove(lineItemId);
-
-    setCart(response.cart);
-  };
-
-  const handleEmptyCart = async () => {
-    const response = await commerce.cart.empty();
-
-    setCart(response.cart);
-  };
-
-  const refreshCart = async () => {
-    const newCart = await commerce.cart.refresh();
-
-    setCart(newCart);
   };
 
   useEffect(() => {
     fetchProducts();
     fetchFeatureProducts();
-    fetchCart();
     fetchMangaProducts();
     fetchFictionProducts();
     fetchBioProducts();
@@ -111,66 +69,38 @@ const App = () => {
 
   return (
     <div>
-      {products.length > 0 ? (
-        <>
-          <Router>
-            <div style={{ display: "flex" }}>
-              <CssBaseline />
-              <Navbar
-                totalItems={cart.total_items}
-                handleDrawerToggle={handleDrawerToggle}
-              />
-              <Switch>
-                <Route exact path="/">
-                  <Products
-                    products={products}
-                    featureProducts={featureProducts}
-                    onAddToCart={handleAddToCart}
-                    handleUpdateCartQty
-                  />
-                </Route>
-                <Route exact path="/cart">
-                  <Cart
-                    cart={cart}
-                    onUpdateCartQty={handleUpdateCartQty}
-                    onRemoveFromCart={handleRemoveFromCart}
-                    onEmptyCart={handleEmptyCart}
-                  />
-                </Route>
-                <Route path="/product-view/:id" exact>
-                  <ProductView />
-                </Route>
-                <Route path="/manga" exact>
-                  <Manga
-                    mangaProducts={mangaProducts}
-                    onAddToCart={handleAddToCart}
-                    handleUpdateCartQty
-                  />
-                </Route>
-                <Route path="/fiction" exact>
-                  <Fiction
-                    fictionProducts={fictionProducts}
-                    onAddToCart={handleAddToCart}
-                    handleUpdateCartQty
-                  />
-                </Route>
-                <Route path="/biography" exact>
-                  <Biography
-                    bioProducts={bioProducts}
-                    onAddToCart={handleAddToCart}
-                    handleUpdateCartQty
-                  />
-                </Route>
-              </Switch>
-            </div>
-          </Router>
-          <Footer />
-        </>
-      ) : (
-        <div className="loader">
-          <img src={loadingImg} alt="Loading" />
-        </div>
-      )}
+      <>
+        <Router>
+          <div style={{ display: "flex" }}>
+            <CssBaseline />
+            <Navbar
+              totalItems={0} // Assuming no cart functionality, so total items is 0
+              handleDrawerToggle={handleDrawerToggle}
+            />
+            <Switch>
+              <Route exact path="/">
+                <Products
+                  products={products}
+                  featureProducts={featureProducts}
+                />
+              </Route>
+              <Route path="/product-view/:id" exact>
+                <ProductView />
+              </Route>
+              <Route path="/manga" exact>
+                <Manga mangaProducts={mangaProducts} />
+              </Route>
+              <Route path="/fiction" exact>
+                <Fiction fictionProducts={fictionProducts} />
+              </Route>
+              <Route path="/biography" exact>
+                <Biography bioProducts={bioProducts} />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+        <Footer />
+      </>
     </div>
   );
 };

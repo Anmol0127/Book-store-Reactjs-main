@@ -8,7 +8,7 @@ import {
   Button,
   CardActionArea,
 } from "@material-ui/core";
-import { Favorite, MenuBook} from "@material-ui/icons";
+import { Favorite, MenuBook } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 import useStyles from "./styles";
@@ -30,23 +30,24 @@ const Product = ({ product, onAddToCart }) => {
         <div className={classes.cardContent}>
           <p className={classes.cardContentName}> {product.name}</p>
         </div>
-        <CardActions disableSpacing className={classes.cardActions}>
+      </CardContent>
+      <CardActions disableSpacing className={classes.cardActions}>
           <Button
             variant="contained"
             className={classes.button}
-            endIcon={<MenuBook />}
-            onClick={() => onAddToCart(product.id, 1)}
+            endIcon={<Favorite/>}
+            // onClick={() => onAddToCart(product.id, 1)}
           >
-            <b>Read Book</b>
+            <b>Add to Favorites</b>
           </Button>
         </CardActions>
-      </CardContent>
+      
       <CardActions disableSpacing className={classes.cardActions}>
         <Button
           variant="contained"
           className={classes.button}
           endIcon={<MenuBook />}
-          // onClick={() => onAddToCart(product.id, 1)}
+        // onClick={() => onAddToCart(product.id, 1)}
         >
           <b>Read Book</b>
         </Button>
